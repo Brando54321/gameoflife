@@ -76,8 +76,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cell.js" />
+    <Content Include="CellSpec.js" />
     <Content Include="Default.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="grid.js" />
+    <Content Include="GridSpec.js" />
+    <Content Include="main.js" />
+    <Content Include="main.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Default.aspx.cs">

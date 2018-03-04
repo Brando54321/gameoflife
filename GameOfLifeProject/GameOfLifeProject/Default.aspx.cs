@@ -10,6 +10,7 @@ using System.Data.Sql;
 using System.Data.SqlTypes;
 using MySql.Data.MySqlClient;
 
+
 namespace GameOfLifeProject
 {
     public partial class Default : System.Web.UI.Page
@@ -17,11 +18,6 @@ namespace GameOfLifeProject
         MySql.Data.MySqlClient.MySqlConnection conn;
         MySql.Data.MySqlClient.MySqlCommand cmd;
         String queryStr;
-
-        MySql.Data.MySqlClient.MySqlConnection conn2;
-        MySql.Data.MySqlClient.MySqlCommand cmd2;
-        String queryStr2;
-
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,10 +29,8 @@ namespace GameOfLifeProject
             String connString = System.Configuration.ConfigurationManager.ConnectionStrings["WebAppConnString"].ToString();
             conn = new MySql.Data.MySqlClient.MySqlConnection(connString);
             conn.Open();
-
-            queryStr = "INSERT INTO gameoflife.user(first_name, last_name)" +
+           queryStr = "INSERT INTO game.info(first_name, last_name)" +
                                                 "VALUES('" + TxtBoxFirstName.Text + "' , '" + TxtBoxLastName.Text + "')";
-
             cmd = new MySql.Data.MySqlClient.MySqlCommand(queryStr, conn);
 
             cmd.ExecuteReader();
@@ -53,7 +47,7 @@ namespace GameOfLifeProject
             conn.Open();
             MySqlCommand cmd = conn.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "SELECT * FROM user";
+            cmd.CommandText = "SELECT * FROM info";
             cmd.ExecuteNonQuery();
             DataTable dt = new DataTable();
             MySqlDataAdapter da = new MySqlDataAdapter(cmd);
